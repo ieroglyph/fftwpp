@@ -13,7 +13,6 @@
 *.a
 
 # MSVS stuff
-debug/*
-release/*
-x64/*
+*Debug/*
+*Release/*
 *.suo
