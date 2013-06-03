@@ -80,6 +80,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.gitignore" />
+    <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Executor.h" />
+    <ClInclude Include="FftwLibraryWin.h" />
+    <ClInclude Include="fftwpp.h" />
+    <ClInclude Include="Plan.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
