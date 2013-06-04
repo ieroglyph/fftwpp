@@ -3,26 +3,27 @@
 // hopefully, this will become a multi-platform tool some time
 #include <windows.h>
 
-#include "filelog.h"
-
 #include <exception>
 #include <iostream>
 #include <string>
 
 namespace fftw
 {
-	char fftwlibrarystr[] = "FftwLibrary";
 
-	class FftwLibrary: public fl::Loggale<fftwlibrarystr>
+	class FftwLibrary
 	{
 
 		HMODULE module;
 
-	public:
-
-		FftwLibrary(void): Loggale(true)
+		FftwLibrary(FftwLibrary& p2)
 		{
-		};
+			// just to make copy constructor unaccessible
+		}
+	public:
+		FftwLibrary(void)
+		{
+			// ???
+		}
 
 		FftwLibrary( const wchar_t* lib_path )
 		{
@@ -47,7 +48,6 @@ namespace fftw
 
 		void* GetProcAddress( char* proc )
 		{
-			llo("GetProcAddress");
 			if ( this->module == 0 )
 				throw std::exception("Library is not loaded!");
 			void* ProcAddr = ::GetProcAddress( this->module, proc );
