@@ -1,11 +1,15 @@
-#pragma once
+﻿#pragma once
+
+#include "filelog.h"
 
 #include "Executor.h"
 
 namespace fftw
 {
 
-	class Plan
+	char planstr[] = "Plan";
+
+	class Plan: fl::Loggale<planstr>
 	{
 		fftw_complex* in;
 		fftw_complex* out;
@@ -18,9 +22,9 @@ namespace fftw
 		{
 			// ???
 		}
-		Plan(char* filepath, int N, char* wisdompath = 0)
+		Plan( std::wstring filepath, int N, char* wisdompath = 0 ):
+			e(filepath)
 		{
-			this->e = Executor(filepath);
 			this->n = N;
 			this->in = 
 				(fftw_complex*)
@@ -55,4 +59,3 @@ namespace fftw
 		}
 	};
 }
-

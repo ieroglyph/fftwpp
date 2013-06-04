@@ -32,5 +32,8 @@
     <ClInclude Include="fftwpp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="filelog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
