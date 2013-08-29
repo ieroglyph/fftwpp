@@ -1,15 +1,12 @@
 ﻿#pragma once
 
-#include "filelog.h"
 
 #include "Executor.h"
 
 namespace fftw
 {
 
-	char planstr[] = "Plan";
-
-	class Plan: fl::Loggale<planstr>
+	class Plan
 	{
 		fftw_complex* in;
 		fftw_complex* out;
