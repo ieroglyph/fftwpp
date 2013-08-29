@@ -19,23 +19,44 @@ int main( int argc, char* argv[] )
 
 	try
 	{
-		Plan p( wstring(L"c:\\fftw.dll"), 1<<18 );
-
 		Complex* signal = new Complex[1000];
 
 		for (int i = 0; i < 1000; i++)
 			signal[i] = 2*i;
 
-
 		Complex* specter = new Complex[1<<18];
 
-		p.execute( 1000, (void*)signal, (void*)specter );
+		Complex* specter1 = new Complex[1000];
 
-		p.execute( 1000, (void*)signal, (void*)specter );
 
-		p.execute( 1000, (void*)signal, (void*)specter );
+		// test forward with oversampling
+		{
+			Plan p( wstring(L"c:\\fftw.dll"), 1<<18, Direction::Forward );
 
-		cout << specter[156];
+			p.execute( 1000, (void*)signal, (void*)specter );
+
+			cout << specter[499] << endl;
+		}
+
+		cout << signal[499] << endl;
+		// test forward
+		{
+			Plan p( wstring(L"c:\\fftw.dll"), 1000, Direction::Forward );
+
+			p.execute( 1000, (void*)signal, (void*)specter1 );
+
+			cout << specter1[499] << endl;
+		}
+
+		// test backward
+		{
+			Plan p( wstring(L"c:\\fftw.dll"), 1000, Direction::Backward );
+
+			p.execute( 1000, (void*)specter1, (void*)signal );
+
+			cout << signal[499] << endl;
+		}
+
 
 	}
 	catch ( std::exception& e )

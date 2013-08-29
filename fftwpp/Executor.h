@@ -30,9 +30,7 @@ namespace fftw
 		{
 			// file assumed to be existing
 
-#define F(f) 	this->f = (f##_func) \
-				lib.GetProcAddress \
-				(#f);
+#define F(f) 	this->f = (f##_func)lib.GetProcAddress(#f);
 
 			F( fftw_plan_dft_1d );
 			F( fftw_execute );

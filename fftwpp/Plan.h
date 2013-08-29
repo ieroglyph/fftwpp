@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-
 #include "Executor.h"
+#include "Params.h"
 
 namespace fftw
 {
@@ -23,7 +23,10 @@ namespace fftw
 		{
 			// ???
 		}
-		Plan( std::wstring filepath, int N, char* wisdompath = 0 ):
+		Plan( std::wstring filepath, 
+			  int N, 
+			  fftw::Direction dir,
+			  char* wisdompath = 0 ):
 			e(filepath)
 		{
 			this->n = N;
@@ -36,7 +39,7 @@ namespace fftw
 			memset( this->in, 0, sizeof(fftw_complex) * N );
 			memset( this->out, 0, sizeof(fftw_complex) * N );
 			this->p = this->e.fftw_plan_dft_1d
-				( N, in, out, FFTW_FORWARD, FFTW_ESTIMATE);
+				( N, in, out, (int)dir, FFTW_ESTIMATE);
 		}
 		~Plan(void)
 		{
