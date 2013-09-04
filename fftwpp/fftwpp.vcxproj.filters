@@ -35,7 +35,7 @@
     <ClInclude Include="filelog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Params.h">
+    <ClInclude Include="Flags.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

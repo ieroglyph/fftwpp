@@ -31,7 +31,7 @@ int main( int argc, char* argv[] )
 
 		// test forward with oversampling
 		{
-			Plan p( wstring(L"c:\\fftw.dll"), 1<<18, Direction::Forward );
+			Plan p( wstring(L"c:\\fftw.dll"), 1<<18, Flags::Direction::Forward );
 
 			p.execute( 1000, (void*)signal, (void*)specter );
 
@@ -41,7 +41,7 @@ int main( int argc, char* argv[] )
 		cout << signal[499] << endl;
 		// test forward
 		{
-			Plan p( wstring(L"c:\\fftw.dll"), 1000, Direction::Forward );
+			Plan p( wstring(L"c:\\fftw.dll"), 1000, Flags::Direction::Forward );
 
 			p.execute( 1000, (void*)signal, (void*)specter1 );
 
@@ -50,7 +50,7 @@ int main( int argc, char* argv[] )
 
 		// test backward
 		{
-			Plan p( wstring(L"c:\\fftw.dll"), 1000, Direction::Backward );
+			Plan p( wstring(L"c:\\fftw.dll"), 1000, Flags::Direction::Backward );
 
 			p.execute( 1000, (void*)specter1, (void*)signal );
 

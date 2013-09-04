@@ -87,7 +87,7 @@
     <ClInclude Include="FftwLibraryWin.h" />
     <ClInclude Include="fftwpp.h" />
     <ClInclude Include="filelog.h" />
-    <ClInclude Include="Params.h" />
+    <ClInclude Include="Flags.h" />
     <ClInclude Include="Plan.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

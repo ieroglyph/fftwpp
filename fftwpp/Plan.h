@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Executor.h"
-#include "Params.h"
+#include "Flags.h"
 
 namespace fftw
 {
@@ -25,8 +25,9 @@ namespace fftw
 		}
 		Plan( std::wstring filepath, 
 			  int N, 
-			  fftw::Direction dir,
-			  char* wisdompath = 0 ):
+			  Flags::Direction dir,
+			  Flags::Planning pla = Flags::Planning::Estimate,
+			  Flags::Algorithm alg = Flags::Algorithm::DestroyInput ):
 			e(filepath)
 		{
 			this->n = N;
@@ -39,7 +40,7 @@ namespace fftw
 			memset( this->in, 0, sizeof(fftw_complex) * N );
 			memset( this->out, 0, sizeof(fftw_complex) * N );
 			this->p = this->e.fftw_plan_dft_1d
-				( N, in, out, (int)dir, FFTW_ESTIMATE);
+				( N, in, out, (int)dir, (int)pla | (int)alg );
 		}
 		~Plan(void)
 		{
